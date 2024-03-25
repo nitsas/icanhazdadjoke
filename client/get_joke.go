@@ -45,7 +45,7 @@ func GetJoke(id string) (Joke, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices {
-		return Joke{}, &ResponseStatusError{resp.StatusCode}
+		return Joke{}, &ResponseStatusError{StatusCode: resp.StatusCode}
 	}
 
 	bodyBytes, err := io.ReadAll(resp.Body)
@@ -59,7 +59,7 @@ func GetJoke(id string) (Joke, error) {
 	}
 
 	if jokeResp.StatusCode < http.StatusOK || jokeResp.StatusCode >= http.StatusMultipleChoices {
-		return Joke{}, &ResponseStatusError{jokeResp.StatusCode}
+		return Joke{}, &ResponseStatusError{StatusCode: jokeResp.StatusCode}
 	}
 
 	joke := Joke{jokeResp.Id, jokeResp.Text}
