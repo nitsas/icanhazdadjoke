@@ -6,9 +6,6 @@ import (
 	"net/http"
 )
 
-const BASE_URL = "https://icanhazdadjoke.com/"
-const USER_AGENT = "https://github.com/nitsas/icanhazdadjoke"
-
 type JokeResponse struct {
 	Id         string `json:"id"`
 	Text       string `json:"joke"`
