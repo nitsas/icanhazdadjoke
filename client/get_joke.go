@@ -21,14 +21,6 @@ type Joke struct {
 	Text string `json:"joke"`
 }
 
-type ResponseStatusError struct {
-	StatusCode int
-}
-
-func (e *ResponseStatusError) Error() string {
-	return fmt.Sprintf("Got response status %d (%s)", e.StatusCode, http.StatusText(e.StatusCode))
-}
-
 func GetJoke(id string) (Joke, error) {
 	req, err := http.NewRequest("GET", jokeURL(id), nil)
 	if err != nil {
