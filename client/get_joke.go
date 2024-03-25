@@ -12,8 +12,8 @@ type getJokeResponse struct {
 	StatusCode int    `json:"status"`
 }
 
-func GetJoke(id string) (Joke, error) {
-	req, err := http.NewRequest("GET", JokeURL(id), nil)
+func (c *Client) GetJoke(id string) (Joke, error) {
+	req, err := http.NewRequest("GET", c.JokeURL(id), nil)
 	if err != nil {
 		return Joke{}, err
 	}

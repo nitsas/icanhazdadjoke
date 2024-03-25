@@ -2,13 +2,13 @@ package client
 
 import "fmt"
 
-func JokeURL(id string) string {
+func (c *Client) JokeURL(id string) string {
 	var url string
 
 	if id == "" {
-		url = DEFAULT_BASE_URL
+		url = c.BaseURL
 	} else {
-		url = fmt.Sprintf("%s/j/%s", DEFAULT_BASE_URL, id)
+		url = fmt.Sprintf("%s/j/%s", c.BaseURL, id)
 	}
 
 	return url
