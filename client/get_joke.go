@@ -2,7 +2,6 @@ package client
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 )
@@ -22,7 +21,7 @@ type Joke struct {
 }
 
 func GetJoke(id string) (Joke, error) {
-	req, err := http.NewRequest("GET", jokeURL(id), nil)
+	req, err := http.NewRequest("GET", JokeURL(id), nil)
 	if err != nil {
 		return Joke{}, err
 	}
@@ -57,16 +56,4 @@ func GetJoke(id string) (Joke, error) {
 	joke := Joke{jokeResp.Id, jokeResp.Text}
 
 	return joke, nil
-}
-
-func jokeURL(id string) string {
-	var url string
-
-	if id == "" {
-		url = BASE_URL
-	} else {
-		url = fmt.Sprintf("%s/j/%s", BASE_URL, id)
-	}
-
-	return url
 }
