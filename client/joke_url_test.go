@@ -10,13 +10,13 @@ import (
 var _ = Describe("JokeURL", func() {
 	When("called with an empty string", func() {
 		It("returns the base url (random joke)", func() {
-			Expect(client.JokeURL("")).To(Equal(client.BASE_URL))
+			Expect(client.JokeURL("")).To(Equal(client.DEFAULT_BASE_URL))
 		})
 	})
 
 	When("called with the ID of some joke", func() {
 		It("returns the joke url with the given ID", func() {
-			Expect(client.JokeURL("abcdef")).To(Equal(client.BASE_URL + "/j/abcdef"))
+			Expect(client.JokeURL("abcdef")).To(Equal(client.DEFAULT_BASE_URL + "/j/abcdef"))
 		})
 	})
 })
