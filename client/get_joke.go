@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-type JokeResponse struct {
+type GetJokeResponse struct {
 	Id         string `json:"id"`
 	Text       string `json:"joke"`
 	StatusCode int    `json:"status"`
@@ -40,7 +40,7 @@ func GetJoke(id string) (Joke, error) {
 	if err != nil {
 		return Joke{}, err
 	}
-	var jokeResp JokeResponse
+	var jokeResp GetJokeResponse
 	err = json.Unmarshal(bodyBytes, &jokeResp)
 	if err != nil {
 		return Joke{}, err
