@@ -13,7 +13,8 @@ func main() {
 		jokeId = os.Args[1]
 	}
 
-	joke, err := client.GetJoke(jokeId)
+	c := client.NewClient()
+	joke, err := c.GetJoke(jokeId)
 	if err != nil {
 		panic(err)
 	}
